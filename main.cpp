@@ -87,6 +87,7 @@ public:
             }
         } else if (numThreads < threads.size()) {
             stop = true;
+            lock.unlock();
             condition.notify_all();
             for (auto& thread : threads) {
                 thread.join();
